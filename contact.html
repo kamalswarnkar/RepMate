@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact RepMate</title>
+    <link rel="stylesheet" href="contact.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <header>
+        <nav class="navbar">
+        <div class="logo">
+            <img src="images/new-logo.png" alt="RepMate Logo" class="logo-img" />
+            <span class="logo-text">RepMate</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="login.html" class="btn">Login</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-container">
+        <div class="left-space">
+            <!-- Your animated image will go here -->
+            <div class="image-placeholder">
+                <img src="images/contact.png" alt="Animated Character" class="animated-img" />
+            </div>
+
+            <!-- ✨ Caption below the image -->
+            <div class="left-caption">
+                <p>"Empowered by tech, driven by vision."</p>
+            </div>
+        </div>
+        <div class="form-area">
+            <h1>Contact Us</h1>
+            <form>
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your full name" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="you@example.com" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="e.g. +91 9876543210" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="department">Select Department</label>
+                    <select id="department" required>
+                    <option value="">-- Choose an option --</option>
+                    <option value="tech">Technical Support</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="partnership">Partnerships</option>
+                    <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="What's on your mind?" required></textarea>
+                </div>
+
+                <div class="checkbox-row">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="terms" required />
+                        <span class="checkmark"></span>
+                        <span class="checkbox-label-text">I agree to the terms and conditions</span>
+                    </label>
+                </div>
+
+                <div class="submit-btn-container">
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 RepMate. All rights reserved.</p>
+    </footer>
+</body>
+</html>
