@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign Up - RepMate</title>
+    <link rel="stylesheet" href="signup.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-wrapper">
+        <!-- Left Side Image Section -->
+        <div class="login-image">
+            <img src="images/signup.png" alt="Signup Illustration" />
+            <p class="caption">"Begin your RepMate journey."</p>
+        </div>
+
+        <!-- Right Side Sign-Up Form -->
+        <div class="login-form-area">
+            <div class="form-box">
+                <h1>Sign Up</h1>
+                <form>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" placeholder="Rishi" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" placeholder="Sharma" required />
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="you@example.com" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="+91 9876543210" required />
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="••••••••" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" placeholder="••••••••" required />
+                        </div>
+                    </div>
+
+                    <div class="submit-btn-container">
+                        <button type="submit" class="btn">Sign Up</button>
+                    </div>
+
+                    <p class="signup-text">
+                        Already have an account? <a href="login.html">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
