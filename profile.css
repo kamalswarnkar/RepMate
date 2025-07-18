@@ -277,6 +277,27 @@ label {
   text-decoration: none;
 }
 
+textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2c2c2c;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  min-height: 80px;
+}
+
+textarea:focus {
+  outline: 2px solid #29f5a6;
+}
+
+select:focus {
+  outline: 2px solid #29f5a6;
+}
+
+
 footer {
   text-align: center;
   padding: 20px;

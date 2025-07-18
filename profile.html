@@ -1,101 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>RepMate | User Profile</title>
-    <link rel="stylesheet" href="profile.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RepMate | User Profile</title>
+  <link rel="stylesheet" href="profile.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter&display=swap" rel="stylesheet"/>
 </head>
 <body>
-    <!-- ===== Header Start ===== -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="images/new-logo.png" alt="RepMate Logo" class="logo-img" />
-                <span class="logo-text">RepMate</span>
+  <!-- ===== Header Start ===== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="images/new-logo.png" alt="RepMate Logo" class="logo-img" />
+        <span class="logo-text">RepMate</span>
+      </div>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Goals</a></li>
+        <li><a href="#" class="btn">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- ===== Header End ===== -->
+
+  <main class="profile-wrapper">
+    <div class="profile-container">
+      <!-- Form Card - Left -->
+      <div class="profile-card">
+        <h2 class="main-heading">User Profile</h2>
+        <form class="profile-form">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" placeholder="Enter username" />
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter email" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Age</label>
+              <input type="number" placeholder="21" />
             </div>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Goals</a></li>
-                <li><a href="#" class="btn">Profile</a></li>
-            </ul>
-        </nav>
-    </header>
-    <!-- ===== Header End ===== -->
-
-    <main class="profile-wrapper">
-        <div class="profile-container">
-            <!-- Form Card - Left -->
-            <div class="profile-card">
-                <h2 class="main-heading">User Profile</h2>
-                <form class="profile-form">
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" placeholder="Enter username" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="Enter email" />
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Age</label>
-                            <input type="number" placeholder="21" />
-                        </div>
-                        <div class="form-group">
-                            <label>Gender</label>
-                            <select>
-                                <option value="">Select</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Height (cm)</label>
-                            <input type="number" placeholder="170" />
-                        </div>
-                        <div class="form-group">
-                            <label>Weight (kg)</label>
-                            <input type="number" placeholder="70" />
-                        </div>
-                    </div>
-
-                    <div class="goal">
-                        <label>Fitness Goal</label>
-                        <a href="#" class="btn-primary">Select Your Goal</a>
-                    </div>
-
-                    <div class="btns">
-                        <a href="#" class="btn-primary">Save Changes</a>
-                        <a href="#" class="btn-logout">Logout</a>
-                    </div>
-                </form>
+            <div class="form-group">
+              <label>Gender</label>
+              <select>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
             </div>
+          </div>
 
-            <!-- Profile Picture - Right -->
-            <div class="profile-img-right">
-                <div class="profile-image-box">
-                    <img src="images/dummy-profile-pic.jpeg" alt="User Profile Picture" />
-                </div>
-                <label for="profile-upload">Change Photo</label>
-                <input type="file" id="profile-upload" name="profile-picture" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>Height (cm)</label>
+              <input type="number" placeholder="170" />
             </div>
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <input type="number" placeholder="70" />
+            </div>
+          </div>
 
+          <!-- ✅ NEW: Diet Preference -->
+          <div class="form-group">
+            <label>Diet Preference</label>
+            <select>
+              <option value="">Select your preference</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="non-vegetarian">Non-Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="keto">Keto</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- ✅ NEW: Medical Conditions -->
+          <div class="form-group">
+            <label>Medical Conditions</label>
+            <textarea rows="4" placeholder="E.g. Asthma, Knee pain, etc."></textarea>
+          </div>
+
+          <div class="goal">
+            <label>Fitness Goal</label>
+            <a href="#" class="btn-primary">Select Your Goal</a>
+          </div>
+
+          <div class="btns">
+            <a href="#" class="btn-primary">Save Changes</a>
+            <a href="#" class="btn-logout">Logout</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Profile Picture - Right -->
+      <div class="profile-img-right">
+        <div class="profile-image-box">
+          <img src="images/dummy-profile-pic.jpeg" alt="User Profile Picture" />
         </div>
-    </main>
+        <label for="profile-upload">Change Photo</label>
+        <input type="file" id="profile-upload" name="profile-picture" />
+      </div>
 
+    </div>
+  </main>
 
-    <!-- ===== Footer Start ===== -->
-    <footer>
-        <p>&copy; 2025 RepMate. All rights reserved.</p>
-    </footer>
-    <!-- ===== Footer End ===== -->
+  <!-- ===== Footer Start ===== -->
+  <footer>
+    <p>&copy; 2025 RepMate. All rights reserved.</p>
+  </footer>
+  <!-- ===== Footer End ===== -->
 </body>
 </html>
