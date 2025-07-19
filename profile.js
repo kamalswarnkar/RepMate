@@ -2,121 +2,128 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".profile-form");
-  const inputs = form.querySelectorAll("input, select, textarea");
-  const saveBtn = document.querySelector(".btn-primary");
-  const logoutBtn = document.querySelector(".btn-logout");
-  const goalBtn = document.querySelector(".goal .btn-primary");
-  const profilePic = document.querySelector(".profile-image-box img");
-  const uploadInput = document.querySelector("#profile-upload");
+  const changeAvatarBtn = document.getElementById("change-avatar-btn");
+  const avatarModal = document.getElementById("avatar-modal");
+  const closeAvatarPopup = document.getElementById("close-avatar-popup");
+  const avatarOptions = document.querySelectorAll(".avatar-option");
+  const profileImage = document.querySelector(".profile-image-box img");
 
-  const currentEmail = localStorage.getItem("repMateUserEmail");
-  if (!currentEmail) {
-    alert("User not logged in. Redirecting to login.");
+  // LOGIN VALIDATION: Block access if not logged in
+  if (!localStorage.getItem("repMateUserLoggedIn")) {
     window.location.href = "login.html";
     return;
   }
 
-  let storedProfile =
-    JSON.parse(localStorage.getItem(`repMateUserProfile_${currentEmail}`)) || {};
+  // Load user data safely
+  try {
+    const savedProfile = JSON.parse(localStorage.getItem("repMateUserProfile"));
+    if (savedProfile) {
+      form.username.value = savedProfile.username || "";
+      form.email.value = savedProfile.email || "";
+      form.age.value = savedProfile.age || "";
+      form.gender.value = savedProfile.gender || "";
+      form.height.value = savedProfile.height || "";
+      form.weight.value = savedProfile.weight || "";
+      form.diet.value = savedProfile.diet || "";
+      form.medical.value = savedProfile.medical || "";
 
-  const fields = [...inputs];
-
-  // Pre-fill form
-  fields.forEach((input, idx) => {
-    if (input.type !== "file" && input.tagName !== "BUTTON") {
-      input.value = storedProfile[input.name || idx] || "";
+      if (savedProfile.avatar) {
+        profileImage.src = savedProfile.avatar;
+      }
     }
-  });
-
-  // Load profile image
-  if (storedProfile.avatar) {
-    profilePic.src = storedProfile.avatar;
+  } catch (err) {
+    console.error("Error loading saved profile:", err);
+    alert("We couldn't load your profile. Please try again.");
   }
 
-  // Save updates on input change
-  inputs.forEach((input) => {
-    input.addEventListener("change", () => {
-      fields.forEach((input, idx) => {
-        storedProfile[input.name || idx] = input.value;
-      });
+  // Save profile with field validation
+  document.querySelector(".btn-primary").addEventListener("click", (e) => {
+    e.preventDefault();
 
-      localStorage.setItem(
-        `repMateUserProfile_${currentEmail}`,
-        JSON.stringify(storedProfile)
-      );
-    });
-  });
-
-  // Profile image upload
-  uploadInput.addEventListener("change", () => {
-    const file = uploadInput.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      profilePic.src = reader.result;
-      storedProfile.avatar = reader.result;
-
-      localStorage.setItem(
-        `repMateUserProfile_${currentEmail}`,
-        JSON.stringify(storedProfile)
-      );
+    const updatedProfile = {
+      username: form.username.value.trim(),
+      email: form.email.value.trim(),
+      age: form.age.value.trim(),
+      gender: form.gender.value,
+      height: form.height.value.trim(),
+      weight: form.weight.value.trim(),
+      diet: form.diet.value,
+      medical: form.medical.value.trim(),
+      avatar: profileImage.src,
     };
-    reader.readAsDataURL(file);
-  });
 
-  // Save button handler
-  saveBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    fields.forEach((input, idx) => {
-      storedProfile[input.name || idx] = input.value;
-    });
-    localStorage.setItem(
-      `repMateUserProfile_${currentEmail}`,
-      JSON.stringify(storedProfile)
-    );
-    alert("Changes saved!");
-  });
-
-  // Logout button handler
-  logoutBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    // Clear only the current user's data
-    localStorage.removeItem("repMateUserLoggedIn");
-    localStorage.removeItem("repMateUserEmail");
-    localStorage.removeItem(`repMateUserProfile_${currentEmail}`);
-    localStorage.removeItem("repMateUserProfile"); // Extra safety
-
-    alert("You've been logged out!");
-    window.location.href = "login.html";
-  });
-
-  // Goal button validation
-  goalBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const requiredFields = [
-      "username",
-      "email",
-      "age",
-      "gender",
-      "height",
-      "weight",
-      "fitness",
-      "diet",
-      "medical",
-    ];
-
-    const isProfileComplete = requiredFields.every((field) => {
-      return storedProfile[field] && storedProfile[field].trim() !== "";
-    });
-
-    if (!isProfileComplete) {
-      alert("Please complete your profile before selecting goals.");
+    // Field Validation
+    if (
+      !updatedProfile.username ||
+      !updatedProfile.email ||
+      !updatedProfile.age ||
+      !updatedProfile.gender ||
+      !updatedProfile.height ||
+      !updatedProfile.weight
+    ) {
+      alert("Please fill in all required fields.");
       return;
     }
 
-    localStorage.setItem("repMateUserProfile", JSON.stringify(storedProfile));
-    window.location.href = "goal-selection.html";
+    // Numeric check
+    if (
+      isNaN(updatedProfile.age) ||
+      isNaN(updatedProfile.height) ||
+      isNaN(updatedProfile.weight)
+    ) {
+      alert("Age, height, and weight must be valid numbers.");
+      return;
+    }
+
+    // Email check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(updatedProfile.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    // Save to localStorage
+    try {
+      localStorage.setItem("repMateUserProfile", JSON.stringify(updatedProfile));
+      alert("Profile saved! Now let's select your goals. 🚀");
+      window.location.href = "goal-selection.html";
+    } catch (error) {
+      console.error("Failed to save profile:", error);
+      alert("Something went wrong while saving. Please try again.");
+    }
+  });
+
+  // Logout button logic
+  document.querySelector(".btn-logout").addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("repMateUserLoggedIn");
+    localStorage.removeItem("repMateUserEmail");
+    localStorage.removeItem("repMateUserProfile");
+    window.location.href = "login.html";
+  });
+
+  // Open avatar modal
+  changeAvatarBtn.addEventListener("click", () => {
+    avatarModal.style.display = "flex";
+  });
+
+  // Close avatar modal
+  closeAvatarPopup.addEventListener("click", () => {
+    avatarModal.style.display = "none";
+  });
+
+  // Avatar selection logic
+  avatarOptions.forEach((avatar) => {
+    avatar.addEventListener("click", () => {
+      avatarOptions.forEach((a) => a.classList.remove("selected"));
+      avatar.classList.add("selected");
+      profileImage.src = avatar.src;
+
+      const profile = JSON.parse(localStorage.getItem("repMateUserProfile")) || {};
+      profile.avatar = avatar.src;
+      localStorage.setItem("repMateUserProfile", JSON.stringify(profile));
+
+      avatarModal.style.display = "none";
+    });
   });
 });

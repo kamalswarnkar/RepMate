@@ -101,10 +101,24 @@
       <!-- Profile Picture - Right -->
       <div class="profile-img-right">
         <div class="profile-image-box">
-          <img src="images/dummy-profile-pic.jpeg" alt="User Profile Picture" />
+          <img src="avatars/avatar1.jpeg" alt="User Profile Picture" />
         </div>
-        <label for="profile-upload">Change Photo</label>
-        <input type="file" id="profile-upload" name="profile-picture" />
+        <button id="change-avatar-btn" class="btn-primary">Change Photo</button>
+
+<!-- Avatar Selection Modal (Hidden by default) -->
+<div id="avatar-modal" class="avatar-modal">
+  <div class="avatar-modal-content">
+    <h3>Select Your Avatar</h3>
+    <div class="avatar-options">
+      <img src="avatars/avatar1.jpeg" class="avatar-option" />
+      <img src="avatars/avatar2.png" class="avatar-option" />
+      <img src="avatars/avatar3.png" class="avatar-option" />
+      <img src="avatars/avatar4.png" class="avatar-option" />
+    </div>
+    <button id="close-avatar-popup" class="btn-primary">Close</button>
+  </div>
+</div>
+
       </div>
 
     </div>
