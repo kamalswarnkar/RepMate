@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RepMate | Your AI Plan</title>
+  <link rel="stylesheet" href="plan.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="images/new-logo.png" alt="RepMate Logo" class="logo-img">
+      <span class="logo-text">RepMate</span>
+    </div>
+    <h1 class="title">AI Custom Plan</h1>
+    <nav class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="goal-selection.html">Goals</a>
+      <a href="profile.html">Profile</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="plan-container">
+    <!-- First Row: Workout + Diet Plans -->
+    <div class="card-row">
+      <section class="plan-card square-card" id="workout-plan">
+        <h2>Workout Plan 🏋️‍♂️</h2>
+        <div class="plan-content-box">
+        <div class="plan-content" id="workout-content">
+          <p class="loading">Generating your customized workout plan...</p>
+        </div>
+        </div>
+      </section>
+
+      <section class="plan-card square-card" id="diet-plan">
+        <h2>Diet Plan 🍽️</h2>
+        <div class="plan-content-box">
+        <div class="plan-content" id="diet-content">
+          <p class="loading">Crunching macros & meal strategy...</p>
+        </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Extra Tips -->
+    <section class="plan-card" id="extra-tips">
+      <h2>Extra Tips 💡</h2>
+      <div class="plan-content-box">
+      <div class="plan-content" id="tips-content">
+        <p class="loading">Cooking up some personalized advice...</p>
+      </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <div class="btn-area">
+      <button class="cta-btn" onclick="regeneratePlan()">Regenerate Plan</button>
+      <button class="cta-btn secondary" onclick="downloadPlan()">Download Plan</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 RepMate. All Rights Reserved.</p>
+  </footer>
+
+  <script src="plan.js"></script>
+</body>
+</html>

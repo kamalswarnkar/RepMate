@@ -145,6 +145,19 @@ header {
   flex: 1;
 }
 
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  color: #3ECF8E;
+  text-shadow: 0 0 8px #3ECF8E;
+}
+
 .sidebar li {
   font-size: 1.1rem;
   margin: 20px 0;
