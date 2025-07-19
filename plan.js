@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let profileData, goalData;
 
-  // Get the current logged-in user's email
   const userEmail = localStorage.getItem("repMateUserEmail");
 
   if (userEmail) {
@@ -12,14 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  goalData = localStorage.getItem("selectedGoal");
+  try {
+    const goalRaw = localStorage.getItem("selectedGoals"); // plural!
+    goalData = goalRaw ? JSON.parse(goalRaw) : null;
+  } catch (err) {
+    goalData = null;
+  }
 
   const workoutBox = document.getElementById("workout-content");
   const dietBox = document.getElementById("diet-content");
   const tipsBox = document.getElementById("tips-content");
 
   const isProfileValid = profileData && typeof profileData === "object" && profileData.username;
-  const isGoalValid = goalData && goalData !== "null" && goalData !== "undefined";
+  const isGoalValid = Array.isArray(goalData) && goalData.length > 0;
 
   if (!isProfileValid || !isGoalValid) {
     const errorMsg = `<p style='color: red;'>Oops! Missing profile or goal data. Please return to the profile page.</p>`;
@@ -30,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const { username, age, gender, height, weight, fitnessLevel, medical } = profileData;
-  const goal = goalData;
+  const goal = goalData.join(" & "); // display nicely
 
   workoutBox.innerHTML = `
     <p>Hello <strong>${username}</strong>! Here's your workout based on your fitness level <strong>${fitnessLevel}</strong> and goal <strong>${goal}</strong>.</p>
