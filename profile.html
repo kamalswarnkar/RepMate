@@ -32,22 +32,22 @@
         <form class="profile-form">
           <div class="form-group">
             <label>Username</label>
-            <input type="text" placeholder="Enter username" />
+            <input type="text" name="username" placeholder="Enter username" />
           </div>
 
           <div class="form-group">
             <label>Email</label>
-            <input type="email" placeholder="Enter email" />
+            <input type="email" name="email" placeholder="Enter email" />
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>Age</label>
-              <input type="number" placeholder="21" />
+              <input type="number" name="age" placeholder="21" />
             </div>
             <div class="form-group">
               <label>Gender</label>
-              <select>
+              <select name="gender">
                 <option value="">Select</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -59,18 +59,18 @@
           <div class="form-row">
             <div class="form-group">
               <label>Height (cm)</label>
-              <input type="number" placeholder="170" />
+              <input type="number" name="height" placeholder="170" />
             </div>
             <div class="form-group">
               <label>Weight (kg)</label>
-              <input type="number" placeholder="70" />
+              <input type="number" name="weight" placeholder="70" />
             </div>
           </div>
 
           <!-- ✅ NEW: Diet Preference -->
           <div class="form-group">
             <label>Diet Preference</label>
-            <select>
+            <select name="diet">
               <option value="">Select your preference</option>
               <option value="vegetarian">Vegetarian</option>
               <option value="non-vegetarian">Non-Vegetarian</option>
@@ -83,7 +83,7 @@
           <!-- ✅ NEW: Medical Conditions -->
           <div class="form-group">
             <label>Medical Conditions</label>
-            <textarea rows="4" placeholder="E.g. Asthma, Knee pain, etc."></textarea>
+            <textarea rows="4" name="medical" placeholder="E.g. Asthma, Knee pain, etc."></textarea>
           </div>
 
           <div class="goal">
@@ -115,5 +115,6 @@
     <p>&copy; 2025 RepMate. All rights reserved.</p>
   </footer>
   <!-- ===== Footer End ===== -->
+   <script src="profile.js"></script>
 </body>
 </html>

@@ -224,6 +224,15 @@ body {
   position: absolute;
 }
 
+/* === Glow for selected cards === */
+.goal-card.selected-goal {
+  border: 2px solid #00ffcc;
+  box-shadow: 0 0 16px #00ffcc, 0 0 30px rgba(0, 255, 204, 0.4);
+  background-color: #1f252e;
+  transform: translateY(-6px);
+}
+
+
 /* === Footer === */
 footer {
   text-align: center;

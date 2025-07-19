@@ -297,6 +297,13 @@ select:focus {
   outline: 2px solid #29f5a6;
 }
 
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: white;
+}
+
+
 
 footer {
   text-align: center;
