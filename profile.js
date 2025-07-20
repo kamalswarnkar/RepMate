@@ -14,9 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Get current user email
+  const currentUserEmail = localStorage.getItem("repMateUserEmail");
+
   // Load user data safely
   try {
-    const savedProfile = JSON.parse(localStorage.getItem("repMateUserProfile"));
+    const savedProfile =
+      JSON.parse(localStorage.getItem("repMateUserProfile_" + currentUserEmail)) ||
+      JSON.parse(localStorage.getItem("repMateUserProfile"));
+
     if (savedProfile) {
       form.username.value = savedProfile.username || "";
       form.email.value = savedProfile.email || "";
@@ -85,6 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save to localStorage
     try {
       localStorage.setItem("repMateUserProfile", JSON.stringify(updatedProfile));
+      if (currentUserEmail) {
+        localStorage.setItem("repMateUserProfile_" + currentUserEmail, JSON.stringify(updatedProfile));
+      }
+
       alert("Profile saved! Now let's select your goals. 🚀");
       window.location.href = "goal-selection.html";
     } catch (error) {
@@ -119,9 +129,17 @@ document.addEventListener("DOMContentLoaded", () => {
       avatar.classList.add("selected");
       profileImage.src = avatar.src;
 
-      const profile = JSON.parse(localStorage.getItem("repMateUserProfile")) || {};
+      const profile =
+        JSON.parse(localStorage.getItem("repMateUserProfile_" + currentUserEmail)) ||
+        JSON.parse(localStorage.getItem("repMateUserProfile")) ||
+        {};
+
       profile.avatar = avatar.src;
+
       localStorage.setItem("repMateUserProfile", JSON.stringify(profile));
+      if (currentUserEmail) {
+        localStorage.setItem("repMateUserProfile_" + currentUserEmail, JSON.stringify(profile));
+      }
 
       avatarModal.style.display = "none";
     });

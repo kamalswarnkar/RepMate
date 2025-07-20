@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RepMate | Workout</title>
+  <link rel="stylesheet" href="workout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="images/new-logo.png" alt="RepMate Logo" class="logo-img">
+      <span class="logo-text">RepMate</span>
+    </div>
+    <h1 class="title">Workout Arena</h1>
+    <nav class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="goal-selection.html">Goals</a>
+      <a href="profile.html">Profile</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="workout-container">
+    <section class="workout-card">
+      <h2>Today's Session 💪</h2>
+      <div class="workout-video-box">
+        <video controls poster="images/workout-preview.jpg" class="workout-video">
+          <source src="videos/sample-workout.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="btn-area">
+        <button class="cta-btn" onclick="startCamera()">Start Camera</button>
+        <button class="cta-btn secondary" onclick="goBack()">Back to Plan</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 RepMate. All Rights Reserved.</p>
+  </footer>
+
+  <script src="workout.js"></script>
+</body>
+</html>
