@@ -77,6 +77,17 @@
     </div>
   </main>
 
+  <!-- Modal -->
+  <div id="homeGymModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden">
+    <div class="bg-[#1a1f27] border-2 border-[#3ECF8E] rounded-xl p-8 shadow-lg text-center w-[320px]">
+      <h2 class="orbitron text-[#3ECF8E] text-xl mb-4">Where will you workout?</h2>
+      <div class="flex gap-4 justify-center">
+        <button onclick="selectWorkoutPlace('Home')" class="orbitron font-semibold tracking-wide bg-[#0066FF] text-white px-4 py-2 rounded-md transition hover:bg-[#0052cc]">Home</button>
+        <button onclick="selectWorkoutPlace('Gym')" class="orbitron font-semibold tracking-wide bg-[#0066FF] text-white px-4 py-2 rounded-md transition hover:bg-[#0052cc]">Gym</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="mt-16 py-4 border-t border-[#2c3340] text-center text-gray-500 text-sm">
     <p>&copy; 2025 RepMate. All Rights Reserved.</p>
@@ -84,57 +95,55 @@
 
   <!-- Inline JS -->
   <script>
+let currentPlace = null;
+
 document.addEventListener("DOMContentLoaded", () => {
-  let profileData, goalData;
+  const savedPlan = localStorage.getItem("repMateSelectedPlan");
+  if (!savedPlan) {
+    document.getElementById("homeGymModal").classList.remove("hidden");
+  } else {
+    const plan = JSON.parse(savedPlan);
+    currentPlace = plan.place;
+    generatePlan(plan.profile, plan.goal, plan.place, false);
+  }
+});
+
+function selectWorkoutPlace(place) {
+  currentPlace = place;
+  document.getElementById("homeGymModal").classList.add("hidden");
 
   const userEmail = localStorage.getItem("repMateUserEmail");
+  let profileData = null, goalData = null;
+
   if (userEmail) {
-    try {
-      profileData = JSON.parse(localStorage.getItem(`repMateUserProfile_${userEmail}`));
-    } catch {
-      profileData = null;
-    }
+    try { profileData = JSON.parse(localStorage.getItem(`repMateUserProfile_${userEmail}`)); } catch {}
   }
-
   try {
-    const goalRaw = localStorage.getItem("selectedGoals");
-    goalData = goalRaw ? JSON.parse(goalRaw) : null;
-  } catch {
-    goalData = null;
-  }
+    goalData = JSON.parse(localStorage.getItem("selectedGoals")) || [];
+  } catch {}
 
+  if (!profileData || !goalData.length) return;
+
+  generatePlan(profileData, goalData, place, true);
+}
+
+function generatePlan(profileData, goalData, place, save = true) {
   const workoutBox = document.getElementById("workout-content");
   const dietBox = document.getElementById("diet-content");
   const tipsBox = document.getElementById("tips-content");
   const startWorkoutBtn = document.getElementById("start-workout");
 
-  const isProfileValid = profileData && typeof profileData === "object" && profileData.username;
-  const isGoalValid = Array.isArray(goalData) && goalData.length > 0;
-
-  if (!isProfileValid || !isGoalValid) {
-    const errorMsg = "<p class='text-red-500'>Oops! Missing profile or goal data. Please return to the profile page.</p>";
-    workoutBox.innerHTML = errorMsg;
-    dietBox.innerHTML = errorMsg;
-    tipsBox.innerHTML = errorMsg;
-    return;
-  }
-
-  startWorkoutBtn.style.display = "inline-block";
-
-  const { username, age, gender, height, weight, fitnessLevel, medical } = profileData;
-  const goal = goalData.join(" & ");
-
   workoutBox.innerHTML = `
-    <p>Hello <strong>${username}</strong>! Here's your workout based on your fitness level <strong>${fitnessLevel}</strong> and goal <strong>${goal}</strong>.</p>
+    <p>Hello <strong>${profileData.username}</strong>! Here's your <strong>${place}</strong> workout based on your fitness level <strong>${profileData.fitnessLevel}</strong> and goal <strong>${goalData.join(" & ")}</strong>.</p>
     <ul class="list-disc ml-6 mt-2">
       <li>🧍 Warm-up: 5-10 mins of dynamic stretches</li>
-      <li>🏋️ Main workout: Focused routines tailored to ${goal}</li>
+      <li>🏋️ Main workout: ${place === "Gym" ? "Weighted exercises" : "Bodyweight routines"} for ${goalData.join(", ")}</li>
       <li>🧘 Cool-down: Gentle stretches and breathing</li>
     </ul>
   `;
 
   dietBox.innerHTML = `
-    <p>Your ideal meals based on weight: <strong>${weight}kg</strong> and goal: <strong>${goal}</strong></p>
+    <p>Your ideal meals based on weight: <strong>${profileData.weight}kg</strong> and goal: <strong>${goalData.join(" & ")}</strong></p>
     <ul class="list-disc ml-6 mt-2">
       <li>🥗 Breakfast: High protein, moderate carbs</li>
       <li>🍛 Lunch: Balanced macros</li>
@@ -147,24 +156,28 @@ document.addEventListener("DOMContentLoaded", () => {
       <li>🚰 Stay hydrated</li>
       <li>📏 Track your progress</li>
       <li>💤 Prioritize recovery and sleep</li>
-      ${medical ? `<li>🩺 Personal Tip: Keep an eye on your ${medical}</li>` : ""}
+      ${profileData.medical ? `<li>🩺 Personal Tip: Keep an eye on your ${profileData.medical}</li>` : ""}
     </ul>
   `;
 
-  startWorkoutBtn.addEventListener("click", () => {
-    const customPlan = {
-      goal: goalData,
-      profile: profileData,
-      createdAt: new Date().toISOString()
-    };
+  startWorkoutBtn.style.display = "inline-block";
+  startWorkoutBtn.onclick = () => {
+    const customPlan = { profile: profileData, goal: goalData, place, createdAt: new Date().toISOString() };
     localStorage.setItem("repMateSelectedPlan", JSON.stringify(customPlan));
     window.location.href = "workout.html?day=1";
-  });
-});
+  };
+
+  if (save) {
+    const customPlan = { profile: profileData, goal: goalData, place, createdAt: new Date().toISOString() };
+    localStorage.setItem("repMateSelectedPlan", JSON.stringify(customPlan));
+  }
+}
 
 function regeneratePlan() {
-  alert("🔄 Regenerating your plan...");
-  location.reload();
+  const savedPlan = JSON.parse(localStorage.getItem("repMateSelectedPlan"));
+  if (savedPlan) {
+    generatePlan(savedPlan.profile, savedPlan.goal, savedPlan.place, true);
+  }
 }
 
 function downloadPlan() {

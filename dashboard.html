@@ -29,6 +29,21 @@
   <div class="flex-1 grid grid-cols-2 gap-9 pt-10">
     <h2 class="welcome-msg orbitron text-[#3ECF8E] col-span-2 mb-2">Welcome back, Kamal!</h2>
 
+    <!-- Streak Counter -->
+    <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] w-full h-[150px]">
+      <div class="card-content flex items-center justify-center orbitron text-[#3ECF8E] text-2xl">🔥 <span id="streak-count" class="ml-2">0</span></div>
+      <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-2">Streak</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col justify-center cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] w-full h-[150px]">
+      <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mb-2">Progress</span>
+      <div class="w-full bg-[#2c3340] rounded-full h-4">
+        <div id="progress-fill" class="bg-[#3ECF8E] h-4 rounded-full orbitron text-xs text-black text-center" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <!-- Existing Cards -->
     <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] min-h-[300px]">
       <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg"></div>
       <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-2">Workout Logs</span>
@@ -64,6 +79,36 @@
   </aside>
 </div>
 
+<!-- Social Media Sharing -->
+<div class="flex-1 grid grid-cols-2 gap-9 col-span-2 mt-8 mb-8">
+  <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-6 flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] min-h-[220px] col-span-2">
+    
+    <!-- Icon Grid -->
+    <div class="grid grid-cols-3 gap-6 w-full h-full flex-1">
+      <a href="#" id="share-twitter"
+         class="bg-[#12171e] border-2 border-[#2c3340] rounded-lg flex items-center justify-center text-3xl transition hover:border-[#E4405F] hover:shadow-[0_0_12px_#E4405F]">
+         🐦
+      </a>
+      <a href="#" id="share-instagram"
+         class="bg-[#12171e] border-2 border-[#2c3340] rounded-lg flex items-center justify-center text-3xl transition hover:border-[#E4405F] hover:shadow-[0_0_12px_#E4405F]">
+         📸
+      </a>
+      <a href="#" id="share-whatsapp"
+         class="bg-[#12171e] border-2 border-[#2c3340] rounded-lg flex items-center justify-center text-3xl transition hover:border-[#E4405F] hover:shadow-[0_0_12px_#E4405F]">
+         💬
+      </a>
+    </div>
+
+    <!-- Label -->
+    <span class="orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-4">
+      Share Progress
+    </span>
+  </div>
+</div>
+
+
+
+
 <!-- Footer -->
 <footer class="text-center text-sm text-gray-400 py-5 mt-14 border-t border-[#333]">
   <p>© 2025 RepMate. All Rights Reserved.</p>
@@ -87,8 +132,28 @@ document.addEventListener("DOMContentLoaded", () => {
   cards.forEach(card => {
     const label = card.querySelector(".card-label").textContent.trim();
     const contentBox = card.querySelector(".card-content");
-    contentBox.innerHTML = `<p>${mockData[label] || "No data yet 💤"}</p>`;
+    if (label !== "Streak" && label !== "Progress") {
+      contentBox.innerHTML = `<p>${mockData[label] || "No data yet 💤"}</p>`;
+    }
   });
+
+  // Streak Counter
+  let streak = parseInt(localStorage.getItem("streak") || "0");
+  const streakEl = document.getElementById("streak-count");
+  streakEl.textContent = streak;
+
+  // Progress Bar
+  let progress = parseInt(localStorage.getItem("progress") || "0");
+  const progressFill = document.getElementById("progress-fill");
+  progressFill.style.width = progress + "%";
+  progressFill.textContent = progress + "%";
+
+  // Reset logic when goal completed
+  if (progress >= 100) {
+    localStorage.removeItem("progress");
+    localStorage.removeItem("streak");
+    window.location.href = "goal-selection.html";
+  }
 
   // Logout logic
   const logoutBtn = document.querySelector(".logout-btn");

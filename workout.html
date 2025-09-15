@@ -51,6 +51,10 @@
           class="cta-btn bg-[#0066FF] text-white px-6 py-3 font-semibold tracking-wide border border-white/5 shadow-[0_0_6px_rgba(0,102,255,0.3)] rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] transition hover:bg-[#0052cc] hover:-translate-y-0.5 hover:text-[#3ECF8E]">
           Start Camera
         </button>
+        <button onclick="markComplete()" 
+          class="cta-btn bg-[#3ECF8E] text-black px-6 py-3 font-semibold tracking-wide border border-white/5 shadow-[0_0_6px_rgba(62,207,142,0.3)] rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] transition hover:bg-[#2ea86c] hover:-translate-y-0.5 hover:text-[#ffffff]">
+          Mark As Complete
+        </button>
         <button onclick="goBack()" 
           class="cta-btn bg-[#0066FF] text-white px-6 py-3 font-semibold tracking-wide border border-white/5 shadow-[0_0_6px_rgba(0,102,255,0.3)] rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] transition hover:bg-[#0052cc] hover:-translate-y-0.5 hover:text-[#3ECF8E]">
           Back to Plan
@@ -81,41 +85,13 @@
       const workoutMedia = document.querySelector(".workout-media");
 
       const workouts = {
-        1: {
-          title: "Day 1: Chest + Core",
-          instructions: "🔹 3 Sets x 15 Push-Ups\n🔹 3 Sets x 20 Crunches\n🔹 2 Sets x 30s Plank",
-          video: "assets/workout-day1.gif"
-        },
-        2: {
-          title: "Day 2: Legs + Glutes",
-          instructions: "🔹 3 Sets x 20 Squats\n🔹 2 Sets x 15 Lunges (each leg)\n🔹 2 Sets x 15 Glute Bridges",
-          video: "assets/workout-day2.gif"
-        },
-        3: {
-          title: "Day 3: Back + Biceps",
-          instructions: "🔹 3 Sets x 12 Pull-Ups\n🔹 3 Sets x 15 Dumbbell Rows\n🔹 3 Sets x 12 Bicep Curls",
-          video: "assets/workout-day3.gif"
-        },
-        4: {
-          title: "Day 4: Shoulders + Abs",
-          instructions: "🔹 3 Sets x 12 Shoulder Press\n🔹 3 Sets x 15 Lateral Raises\n🔹 3 Sets x 20 Russian Twists",
-          video: "assets/workout-day4.gif"
-        },
-        5: {
-          title: "Day 5: Full Body HIIT",
-          instructions: "🔹 30s Jumping Jacks\n🔹 30s Burpees\n🔹 30s Mountain Climbers\nRepeat x 4 rounds",
-          video: "assets/workout-day5.gif"
-        },
-        6: {
-          title: "Day 6: Lower Body Strength",
-          instructions: "🔹 3 Sets x 12 Deadlifts\n🔹 3 Sets x 15 Step-Ups\n🔹 3 Sets x 20 Calf Raises",
-          video: "assets/workout-day6.gif"
-        },
-        7: {
-          title: "Day 7: Active Recovery",
-          instructions: "🔹 20 min Yoga/Stretching\n🔹 15 min Light Cardio (Walk or Cycle)\n🔹 Breathing Exercises",
-          video: "assets/workout-day7.gif"
-        }
+        1: { title: "Day 1: Chest + Core", instructions: "🔹 3 Sets x 15 Push-Ups\n🔹 3 Sets x 20 Crunches\n🔹 2 Sets x 30s Plank", video: "assets/workout-day1.gif" },
+        2: { title: "Day 2: Legs + Glutes", instructions: "🔹 3 Sets x 20 Squats\n🔹 2 Sets x 15 Lunges (each leg)\n🔹 2 Sets x 15 Glute Bridges", video: "assets/workout-day2.gif" },
+        3: { title: "Day 3: Back + Biceps", instructions: "🔹 3 Sets x 12 Pull-Ups\n🔹 3 Sets x 15 Dumbbell Rows\n🔹 3 Sets x 12 Bicep Curls", video: "assets/workout-day3.gif" },
+        4: { title: "Day 4: Shoulders + Abs", instructions: "🔹 3 Sets x 12 Shoulder Press\n🔹 3 Sets x 15 Lateral Raises\n🔹 3 Sets x 20 Russian Twists", video: "assets/workout-day4.gif" },
+        5: { title: "Day 5: Full Body HIIT", instructions: "🔹 30s Jumping Jacks\n🔹 30s Burpees\n🔹 30s Mountain Climbers\nRepeat x 4 rounds", video: "assets/workout-day5.gif" },
+        6: { title: "Day 6: Lower Body Strength", instructions: "🔹 3 Sets x 12 Deadlifts\n🔹 3 Sets x 15 Step-Ups\n🔹 3 Sets x 20 Calf Raises", video: "assets/workout-day6.gif" },
+        7: { title: "Day 7: Active Recovery", instructions: "🔹 20 min Yoga/Stretching\n🔹 15 min Light Cardio (Walk or Cycle)\n🔹 Breathing Exercises", video: "assets/workout-day7.gif" }
       };
 
       if (workouts[day]) {
@@ -129,11 +105,16 @@
     });
 
     function startCamera() {
-      alert("📷 Camera activation coming soon!");
+      alert("📷 Camera activation coming soon! (Form-check placeholder)");
     }
 
     function goBack() {
       window.location.href = "plan.html";
+    }
+
+    function markComplete() {
+      alert("✅ Workout marked complete! Streak & progress updated.");
+      // later hook: update streak/progress in localStorage/db
     }
   </script>
 </body>

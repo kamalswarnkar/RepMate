@@ -91,6 +91,12 @@
             Login
           </button>
 
+          <!-- Admin Login Button -->
+          <button type="button" id="admin-login"
+            class="mt-4 w-full py-3 bg-[#3ECF8E] text-[#10141a] orbitron font-semibold rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] text-base cursor-pointer transition hover:bg-[#2fa96f] hover:text-white hover:[text-shadow:0_0_6px_rgba(0,0,0,0.6)] hover:-translate-y-0.5">
+            Login as Admin
+          </button>
+
           <!-- Signup Link -->
           <p class="mt-6 text-center text-[0.95rem] text-[#c8ccd4]">
             New to RepMate?
@@ -105,6 +111,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const loginForm = document.querySelector("#login-form");
+      const adminLoginBtn = document.querySelector("#admin-login");
 
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -117,12 +124,18 @@
           return;
         }
 
-        // Simulate login success
+        // Simulate login success for normal users
         localStorage.setItem("repMateUserLoggedIn", "true");
         localStorage.setItem("repMateUserEmail", email);
         localStorage.setItem("repMateUserProfile", localStorage.getItem(`repMateUserProfile_${email}`) || "{}");
 
         window.location.href = "profile.html";
+      });
+
+      // Admin login
+      adminLoginBtn.addEventListener("click", () => {
+        localStorage.setItem("repMateAdminLoggedIn", "true");
+        window.location.href = "admin-dashboard.html";
       });
     });
   </script>
