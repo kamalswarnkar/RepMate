@@ -16,12 +16,12 @@
     100% { box-shadow: 0 0 8px rgba(62,207,142,0.5), 0 0 16px rgba(62,207,142,0.2); }
   }
 </style>
-<body class="m-0">
+< class="m-0">
 
 <!-- Header -->
 <header>
   <nav class="flex justify-between items-center px-8 py-5 bg-[#12171e] border-b border-[#2c3340] shadow orbitron">
-    <div class="flex items-center gap-2 text-[#3ECF8E] font-bold text-2xl">
+    <div id="logo-link" class="flex items-center gap-2 text-[#3ECF8E] font-bold text-2xl">
       <img src="images/new-logo.png" alt="RepMate Logo" class="w-12 h-12 object-cover rounded-full border-2 border-[#3ECF8E] bg-[#10141a] shadow-[0_0_8px_rgba(0,255,170,0.5),0_0_16px_rgba(0,255,170,0.15)] transition-transform hover:scale-105 hover:shadow-[0_0_10px_rgba(0,255,170,0.6),0_0_20px_rgba(0,255,170,0.25)]"/>
       <span class="uppercase">RepMate</span>
     </div>
@@ -69,6 +69,18 @@
 <footer class="text-center p-8 text-gray-500 text-sm">
   <p>© 2025 RepMate. All rights reserved.</p>
 </footer>
+<script>
+  const logoLink = document.getElementById("logo-link");
+
+  // Handle logo click → Dashboard if logged in, else Home
+  logoLink.addEventListener("click", () => {
+    if (localStorage.getItem("repMateUserLoggedIn") === "true") {
+      window.location.href = "dashboard.html";
+    } else {
+      window.location.href = "home.html";
+    }
+  });
+</script>
 
 </body>
 </html>

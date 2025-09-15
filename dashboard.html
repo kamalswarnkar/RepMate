@@ -27,16 +27,16 @@
 
   <!-- Main Dashboard -->
   <div class="flex-1 grid grid-cols-2 gap-9 pt-10">
-    <h2 class="welcome-msg orbitron text-[#3ECF8E] col-span-2 mb-2">Welcome back, Kamal!</h2>
+    <h2 class="welcome-msg orbitron text-[#3ECF8E] col-span-2 mb-2">Welcome back, Champ!</h2>
 
     <!-- Streak Counter -->
-    <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] w-full h-[150px]">
+    <div id="streak-card" class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] w-full h-[150px]">
       <div class="card-content flex items-center justify-center orbitron text-[#3ECF8E] text-2xl">🔥 <span id="streak-count" class="ml-2">0</span></div>
       <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-2">Streak</span>
     </div>
 
     <!-- Progress Bar -->
-    <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col justify-center cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] w-full h-[150px]">
+    <div id="progress-card" class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col justify-center cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] w-full h-[150px]">
       <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mb-2">Progress</span>
       <div class="w-full bg-[#2c3340] rounded-full h-4">
         <div id="progress-fill" class="bg-[#3ECF8E] h-4 rounded-full orbitron text-xs text-black text-center" style="width: 0%">0%</div>
@@ -44,23 +44,23 @@
     </div>
 
     <!-- Existing Cards -->
-    <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] min-h-[300px]">
+    <div id="workouts-card" class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] min-h-[300px]">
       <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg"></div>
       <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-2">Workout Logs</span>
     </div>
 
     <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] min-h-[300px]">
-      <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg"></div>
+      <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg" id="calories-content"></div>
       <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-2">Calories Burned</span>
     </div>
 
     <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] min-h-[300px]">
-      <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg"></div>
+      <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg" id="goals-content"></div>
       <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-2">Goals Achieved</span>
     </div>
 
     <div class="dashboard-card bg-[#1a1f27] border-2 border-[#2c3340] rounded-lg p-5 flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(0,255,170,0.2)] hover:bg-[#1f252e] hover:border-[#3ECF8E] min-h-[300px]">
-      <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg"></div>
+      <div class="card-content flex-1 w-full flex items-center justify-center rounded-lg" id="timeline-content"></div>
       <span class="card-label orbitron text-[#3ECF8E] text-lg uppercase tracking-wide mt-2">Progress Timeline</span>
     </div>
   </div>
@@ -75,7 +75,7 @@
       <li class="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="about.html">About</a></li>
       <li class="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="logout-btn text-[#ff4f4f] border-2 border-[#ff4f4f] font-bold rounded-tl-[15px] rounded-br-[15px] p-3 mt-auto mb-2 w-full hover:bg-[#ff4f4f] hover:text-black orbitron transition">Logout</button>
+    <button class="logout-btn text-[#ff4f4f] border-2 border-[#ff4f4f] font-bold rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] p-3 mt-auto mb-2 w-full hover:bg-[#ff4f4f] hover:text-black orbitron transition">Logout</button>
   </aside>
 </div>
 
@@ -106,9 +106,6 @@
   </div>
 </div>
 
-
-
-
 <!-- Footer -->
 <footer class="text-center text-sm text-gray-400 py-5 mt-14 border-t border-[#333]">
   <p>© 2025 RepMate. All Rights Reserved.</p>
@@ -116,48 +113,202 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // Load username
-  const username = localStorage.getItem("username") || "Fitness Champ";
+  /**
+   * Robust loader for repMateProgress data.
+   * Handles:
+   *  - repMateProgress
+   *  - repMateProgress_<email>
+   *  - keys starting with repMateProgress (including cases where JSON was embedded in the key)
+   *  - sensible fallback to repMateUserProfile / repMateSelectedPlan / selectedGoals
+   */
+
+  function safeParse(str) {
+    if (!str) return null;
+    try { return JSON.parse(str); } catch (e) { return null; }
+  }
+
+  // 1) Try direct known keys
+  const userEmail = localStorage.getItem("repMateUserEmail");
+  let progressRaw = localStorage.getItem("repMateProgress") || null;
+  if (!progressRaw && userEmail) {
+    progressRaw = localStorage.getItem("repMateProgress_" + userEmail) || null;
+  }
+
+  // 2) If still not found, search all keys that include/ start with 'repMateProgress'
+  if (!progressRaw) {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      if (k === "repMateProgress" || k.startsWith("repMateProgress")) {
+        // Prefer value if it looks like JSON with useful fields
+        const candidateVal = localStorage.getItem(k);
+        const parsedVal = safeParse(candidateVal);
+        if (parsedVal && (parsedVal.profile || parsedVal.completed || parsedVal.goal)) {
+          progressRaw = candidateVal;
+          break;
+        }
+
+        // If not in the value, it's possible the key itself contains the plan JSON (weird cases).
+        // Try parsing the key suffix after prefix 'repMateProgress_' if present (some buggy code may have saved that way).
+        const prefix = "repMateProgress_";
+        if (k.startsWith(prefix)) {
+          const keyJson = k.slice(prefix.length);
+          const parsedKeyJson = safeParse(keyJson);
+          if (parsedKeyJson && (parsedKeyJson.profile || parsedKeyJson.goal)) {
+            // merge parsedKeyJson with parsedVal (value may contain completed array)
+            const merged = Object.assign({}, parsedKeyJson, (parsedVal || {}));
+            progressRaw = JSON.stringify(merged);
+            break;
+          }
+        }
+
+        // if value exists but isn't complete, keep it as candidate and break to parse it later
+        if (candidateVal) {
+          progressRaw = candidateVal;
+          break;
+        }
+      }
+    }
+  }
+
+  // 3) parse or fallback to building from other keys
+  let progressData = safeParse(progressRaw);
+  if (!progressData) {
+    // Fallback: assemble from repMateUserProfile + selectedGoals + repMateSelectedPlan (if any)
+    const profileFromUserProfile = safeParse(localStorage.getItem("repMateUserProfile")) ||
+                                   safeParse(localStorage.getItem("repMateUserProfile_" + userEmail)) ||
+                                   null;
+    const selectedGoals = safeParse(localStorage.getItem("selectedGoals")) || safeParse(localStorage.getItem("selectedGoals_" + userEmail)) || null;
+
+    // repMateSelectedPlan may contain profile & goal & place
+    const selectedPlan = safeParse(localStorage.getItem("repMateSelectedPlan")) ||
+                         safeParse(localStorage.getItem("selectedPlan")) ||
+                         safeParse(localStorage.getItem("repMateSelectedPlan_" + userEmail)) ||
+                         null;
+
+    progressData = {};
+
+    // profile priority: explicit repMateProgress.profile > repMateSelectedPlan.profile > repMateUserProfile
+    progressData.profile = (selectedPlan && selectedPlan.profile) ? selectedPlan.profile : (profileFromUserProfile || { username: "", email: userEmail || "" });
+
+    // goal priority: repMateSelectedPlan.goal > selectedGoals
+    progressData.goal = (selectedPlan && selectedPlan.goal) ? selectedPlan.goal : (selectedGoals || []);
+
+    // place
+    progressData.place = (selectedPlan && selectedPlan.place) ? selectedPlan.place : (selectedPlan && selectedPlan.profile && selectedPlan.profile.place) || "Home";
+
+    // completed: try to find any key that looks like it holds completion info
+    const possibleCompleted = safeParse(localStorage.getItem("repMateProgressCompleted")) ||
+                              safeParse(localStorage.getItem("repMateProgress_completed")) ||
+                              safeParse(localStorage.getItem("repMateProgressData")) ||
+                              null;
+    progressData.completed = (possibleCompleted && possibleCompleted.completed) ? possibleCompleted.completed : (possibleCompleted && Array.isArray(possibleCompleted) ? possibleCompleted : []);
+  }
+
+  // If parsed object contains nested stringified JSON (rare), normalize
+  if (typeof progressData === "string") {
+    const tmp = safeParse(progressData);
+    if (tmp) progressData = tmp;
+  }
+
+  // Normalize fields
+  progressData.profile = progressData.profile || {};
+  progressData.goal = progressData.goal || [];
+  // completed might be stored under several shapes: { completed: [...] } or ["1","2"]
+  let completed = [];
+  if (Array.isArray(progressData.completed)) {
+    completed = progressData.completed;
+  } else if (progressData.completed && Array.isArray(progressData.completed.completed)) {
+    completed = progressData.completed.completed;
+  } else if (typeof progressData.completed === "object") {
+    // try to find keys inside
+    for (const k in progressData.completed) {
+      if (Array.isArray(progressData.completed[k])) {
+        completed = progressData.completed[k];
+        break;
+      }
+    }
+  } else if (!progressData.completed) {
+    completed = [];
+  }
+
+  // final safety cast
+  if (!Array.isArray(completed)) completed = [];
+
+  // Compute username shown
+  const username = (progressData.profile && progressData.profile.username && String(progressData.profile.username).trim()) ? progressData.profile.username : (
+    (safeParse(localStorage.getItem("repMateUserProfile")) && safeParse(localStorage.getItem("repMateUserProfile")).username) ? safeParse(localStorage.getItem("repMateUserProfile")).username :
+    (safeParse(localStorage.getItem("repMateUserData")) && safeParse(localStorage.getItem("repMateUserData")).name) ? safeParse(localStorage.getItem("repMateUserData")).name :
+    "Fitness Champ"
+  );
   document.querySelector(".welcome-msg").textContent = `Welcome back, ${username}!`;
 
-  // Mock dashboard data
-  const mockData = {
-    "Workout Logs": "5 workouts this week 💪",
-    "Calories Burned": "2,450 kcal 🔥",
-    "Goals Achieved": "2 out of 3 🏆",
-    "Progress Timeline": "You're improving steadily 📈"
-  };
+  // Streak = number of consecutive completed entries we can infer. For simplicity we'll use completed.length
+  const streakCount = completed.length || 0;
+  document.getElementById("streak-count").textContent = streakCount;
 
-  const cards = document.querySelectorAll(".dashboard-card");
-  cards.forEach(card => {
-    const label = card.querySelector(".card-label").textContent.trim();
-    const contentBox = card.querySelector(".card-content");
-    if (label !== "Streak" && label !== "Progress") {
-      contentBox.innerHTML = `<p>${mockData[label] || "No data yet 💤"}</p>`;
+  // Determine totalWorkouts if plan details available
+  let totalWorkouts = 7; // default fallback
+  // Check for explicit total in repMateSelectedPlan or progressData
+  const selectedPlanCandidate = safeParse(localStorage.getItem("repMateSelectedPlan")) ||
+                                safeParse(localStorage.getItem("selectedPlan")) ||
+                                safeParse(localStorage.getItem("repMateSelectedPlan_" + userEmail));
+  if (selectedPlanCandidate) {
+    if (Array.isArray(selectedPlanCandidate.workouts) && selectedPlanCandidate.workouts.length > 0) {
+      totalWorkouts = selectedPlanCandidate.workouts.length;
+    } else if (typeof selectedPlanCandidate.totalDays === "number") {
+      totalWorkouts = selectedPlanCandidate.totalDays;
+    } else if (Array.isArray(selectedPlanCandidate.goal) && selectedPlanCandidate.goal.length > 0) {
+      // no clear workouts count — keep default 7
+    }
+  }
+  // If progressData supplies a hint:
+  if (typeof progressData.totalWorkouts === "number") totalWorkouts = progressData.totalWorkouts;
+  if (Array.isArray(progressData.workouts) && progressData.workouts.length > 0) totalWorkouts = progressData.workouts.length;
+
+  // Compute progress %
+  const progressPercent = Math.min(Math.round((streakCount / Math.max(1, totalWorkouts)) * 100), 100);
+  const progressFill = document.getElementById("progress-fill");
+  progressFill.style.width = progressPercent + "%";
+  progressFill.textContent = progressPercent + "%";
+
+  // Populate stats cards (safe fallbacks)
+  document.getElementById("calories-content").innerHTML =
+    progressData.calories || localStorage.getItem("caloriesBurned") || "No data yet 🔥";
+
+  // Show goals achieved either from progressData.goals or selectedGoals
+  const goalsFromProgress = (progressData.goals && (Array.isArray(progressData.goals) ? progressData.goals.join(", ") : progressData.goals));
+  const selectedGoals = safeParse(localStorage.getItem("selectedGoals")) || safeParse(localStorage.getItem("selectedGoals_" + userEmail));
+  document.getElementById("goals-content").innerHTML =
+    goalsFromProgress || (selectedGoals && selectedGoals.length ? selectedGoals.join(", ") : localStorage.getItem("goalsAchieved") || "No data yet 🏆");
+
+  // Timeline content
+  document.getElementById("timeline-content").innerHTML =
+    progressData.timeline || localStorage.getItem("progressTimeline") || "Track your progress 📈";
+
+  // Workouts card click: route to workout only if a plan exists (try repMateSelectedPlan or repMateSelectedPlan_<email> or selectedPlan)
+  document.getElementById("workouts-card").addEventListener("click", () => {
+    const planCandidate = safeParse(localStorage.getItem("repMateSelectedPlan")) ||
+                          safeParse(localStorage.getItem("selectedPlan")) ||
+                          safeParse(localStorage.getItem("repMateSelectedPlan_" + userEmail));
+    if (planCandidate) {
+      window.location.href = "workout.html?day=1";
+    } else {
+      // fallback to the generic plan page
+      window.location.href = "plan.html";
     }
   });
 
-  // Streak Counter
-  let streak = parseInt(localStorage.getItem("streak") || "0");
-  const streakEl = document.getElementById("streak-count");
-  streakEl.textContent = streak;
-
-  // Progress Bar
-  let progress = parseInt(localStorage.getItem("progress") || "0");
-  const progressFill = document.getElementById("progress-fill");
-  progressFill.style.width = progress + "%";
-  progressFill.textContent = progress + "%";
-
-  // Reset logic when goal completed
-  if (progress >= 100) {
-    localStorage.removeItem("progress");
-    localStorage.removeItem("streak");
+  // If progress completed 100% -> clear and go to goal selection
+  if (progressPercent >= 100) {
+    try {
+      localStorage.removeItem("repMateProgress");
+    } catch (e) {}
     window.location.href = "goal-selection.html";
   }
 
-  // Logout logic
-  const logoutBtn = document.querySelector(".logout-btn");
-  logoutBtn.addEventListener("click", () => {
+  // Logout clears and returns to login
+  document.querySelector(".logout-btn").addEventListener("click", () => {
     localStorage.clear();
     window.location.href = "login.html";
   });

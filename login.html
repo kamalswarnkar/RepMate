@@ -40,7 +40,7 @@
     .custom-checkbox input:checked + .checkmark::after { display: block; }
   </style>
 </head>
-<body class="bg-[#10141a] text-[#e4e6eb] m-0 p-0">
+<div class="bg-[#10141a] text-[#e4e6eb] m-0 p-0">
 
   <div class="flex h-screen w-full overflow-hidden">
     <!-- Left Side Image Section -->
@@ -106,12 +106,17 @@
       </div>
     </div>
   </div>
-
+  
   <!-- Inline JS -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const loginForm = document.querySelector("#login-form");
       const adminLoginBtn = document.querySelector("#admin-login");
+
+      // Auto-redirect if already logged in
+      if (localStorage.getItem("repMateUserLoggedIn") === "true") {
+        window.location.href = "dashboard.html";
+      }
 
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -124,12 +129,18 @@
           return;
         }
 
-        // Simulate login success for normal users
-        localStorage.setItem("repMateUserLoggedIn", "true");
-        localStorage.setItem("repMateUserEmail", email);
-        localStorage.setItem("repMateUserProfile", localStorage.getItem(`repMateUserProfile_${email}`) || "{}");
+        // Retrieve user data
+        const storedUsers = JSON.parse(localStorage.getItem("repMateUsers") || "{}");
 
-        window.location.href = "profile.html";
+        if (storedUsers[email] && storedUsers[email].password === password) {
+          // Valid credentials
+          localStorage.setItem("repMateUserLoggedIn", "true");
+          localStorage.setItem("repMateUserEmail", email);
+          localStorage.setItem("repMateUserProfile", JSON.stringify(storedUsers[email].profile || {}));
+          window.location.href = "dashboard.html";
+        } else {
+          alert("Invalid email or password. Please try again.");
+        }
       });
 
       // Admin login
