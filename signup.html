@@ -17,7 +17,6 @@
       text-shadow: 0 0 6px rgba(62, 207, 142, 0.3);
     }
 
-    /* Autofill fix */
     input:-webkit-autofill,
     input:-webkit-autofill:hover, 
     input:-webkit-autofill:focus {
@@ -27,7 +26,6 @@
       border-radius: 0.5rem;
     }
 
-    /* Button styling */
     .btn {
       border-top-left-radius: 15px;
       border-bottom-right-radius: 15px;
@@ -45,7 +43,6 @@
       box-shadow: 0 0 10px rgba(62, 207, 142, 0.3) !important;
     }
 
-    /* Login link glow only text */
     .login-link {
       color: #3ECF8E;
       font-weight: 600;
@@ -53,6 +50,23 @@
     }
     .login-link:hover {
       text-shadow: 0 0 6px rgba(62, 207, 142, 0.4);
+    }
+
+    .toggle-eye {
+      position: absolute;
+      right: 12px;
+      bottom: 14px; /* FIX: aligns eye inside the input */
+      cursor: pointer;
+      color: #9ca3af; /* default grey */
+      transition: color 0.3s ease;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .toggle-eye:hover {
+      color: #3ECF8E;
+    }
+    .toggle-eye.active {
+      color: #3ECF8E; /* green when active */
     }
   </style>
 </head>
@@ -104,15 +118,17 @@
 
         <!-- Password Row -->
         <div class="flex gap-4">
-          <div class="flex flex-col w-1/2">
+          <div class="flex flex-col w-1/2 relative">
             <label for="password" class="text-sm mb-2 text-[#c8ccd4]">Password</label>
             <input type="password" id="password" placeholder="••••••••" required
                    class="bg-[#10141a] border border-[#2c3340] rounded-lg px-4 py-3 text-base focus:outline-none"/>
+            <span class="toggle-eye" id="toggle-password">&#128065;</span>
           </div>
-          <div class="flex flex-col w-1/2">
+          <div class="flex flex-col w-1/2 relative">
             <label for="confirm-password" class="text-sm mb-2 text-[#c8ccd4]">Confirm Password</label>
             <input type="password" id="confirm-password" placeholder="••••••••" required
                    class="bg-[#10141a] border border-[#2c3340] rounded-lg px-4 py-3 text-base focus:outline-none"/>
+            <span class="toggle-eye" id="toggle-confirm">&#128065;</span>
           </div>
         </div>
 
@@ -167,6 +183,23 @@
         localStorage.setItem("repMateUserLoggedIn", "true");
 
         window.location.href = "profile.html";
+      });
+
+      // Eye toggle logic
+      const togglePassword = document.querySelector("#toggle-password");
+      const passwordInput = document.querySelector("#password");
+      togglePassword.addEventListener("click", () => {
+        const isHidden = passwordInput.type === "password";
+        passwordInput.type = isHidden ? "text" : "password";
+        togglePassword.classList.toggle("active", isHidden);
+      });
+
+      const toggleConfirm = document.querySelector("#toggle-confirm");
+      const confirmInput = document.querySelector("#confirm-password");
+      toggleConfirm.addEventListener("click", () => {
+        const isHidden = confirmInput.type === "password";
+        confirmInput.type = isHidden ? "text" : "password";
+        toggleConfirm.classList.toggle("active", isHidden);
       });
     });
   </script>

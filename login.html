@@ -69,10 +69,15 @@
           </div>
 
           <!-- Password -->
-          <div class="flex flex-col">
+          <div class="flex flex-col relative">
             <label for="password" class="orbitron text-[#c8ccd4] text-sm mb-2">Password</label>
             <input type="password" id="password" placeholder="Your password" required
-                   class="bg-[#10141a] border border-[#2c3340] rounded-lg px-4 py-3 text-base text-[#e4e6eb] focus:border-[#3ECF8E] focus:shadow-[0_0_10px_rgba(62,207,142,0.2)] outline-none transition" />
+                   class="bg-[#10141a] border border-[#2c3340] rounded-lg px-4 py-3 pr-10 text-base text-[#e4e6eb] focus:border-[#3ECF8E] focus:shadow-[0_0_10px_rgba(62,207,142,0.2)] outline-none transition" />
+            <!-- Eye Toggle -->
+            <span id="toggle-password" 
+                  class="absolute right-3 top-10 cursor-pointer text-gray-400 hover:text-[#3ECF8E] transition text-lg select-none">
+              👁
+            </span>
           </div>
 
           <!-- Extras -->
@@ -112,6 +117,21 @@
     document.addEventListener("DOMContentLoaded", () => {
       const loginForm = document.querySelector("#login-form");
       const adminLoginBtn = document.querySelector("#admin-login");
+      const togglePassword = document.querySelector("#toggle-password");
+      const passwordInput = document.querySelector("#password");
+
+      // Password toggle
+      togglePassword.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          togglePassword.classList.remove("text-gray-400");
+          togglePassword.classList.add("text-[#3ECF8E]");
+        } else {
+          passwordInput.type = "password";
+          togglePassword.classList.remove("text-[#3ECF8E]");
+          togglePassword.classList.add("text-gray-400");
+        }
+      });
 
       // Auto-redirect if already logged in
       if (localStorage.getItem("repMateUserLoggedIn") === "true") {
