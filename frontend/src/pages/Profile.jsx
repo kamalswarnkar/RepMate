@@ -303,7 +303,7 @@ const Profile = () => {
 
               <div className="flex justify-center items-center gap-3">
                 <label className="font-orbitron">Fitness Goal</label>
-                <a href="/goal-selection" className="btn-primary">
+                <a href="/goal" className="btn-primary">
                   Select Your Goal
                 </a>
               </div>

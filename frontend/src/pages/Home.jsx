@@ -59,18 +59,18 @@ const Home = () => {
           </div>
           <ul className="flex gap-6 text-[15px] font-semibold">
             <li>
-              <a href="about" className="nav-link">
+              <a href="/about" className="nav-link">
                 About
               </a>
             </li>
             <li>
-              <a href="contact" className="nav-link">
+              <a href="/contact" className="nav-link">
                 Contact
               </a>
             </li>
             <li>
               <a
-                href="login"
+                href="/login"
                 className="bg-[#0066FF] px-4 py-2 rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] text-white shadow-[0_0_6px_rgba(0,102,255,0.3)] border border-white/5 hover:bg-[#0052cc] hover:bg-[#0052cc] hover:shadow-[0_0_10px_rgba(0,102,255,0.6),0_0_18px_rgba(0,102,255,0.3)] hover:text-[#3ECF8E] hover:translate-y-[-2px] hover:[text-shadow:0_0_6px_rgba(62,207,142,0.6),0_0_10px_rgba(62,207,142,0.3)] transition"
               >
                 Login
@@ -90,7 +90,7 @@ const Home = () => {
           crafted just for you.
         </p>
         <a
-          href="onboarding/goal"
+          href="/goal"
           className="mt-8 inline-block bg-[#0066FF] text-white px-6 py-3 orbitron font-semibold tracking-wide shadow-[0_0_6px_rgba(0,102,255,0.3)] border border-white/5 rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] hover:bg-[#0052cc] hover:shadow-[0_0_10px_rgba(0,102,255,0.6),0_0_18px_rgba(0,102,255,0.3)] hover:text-[#3ECF8E] hover:translate-y-[-2px] hover:[text-shadow:0_0_6px_rgba(62,207,142,0.6),0_0_10px_rgba(62,207,142,0.3)] transition"
         >
           Start Your Journey

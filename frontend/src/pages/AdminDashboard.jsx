@@ -39,7 +39,7 @@ const AdminDashboard = () => {
               <a href="#">💬 Messages</a>
             </li>
           </ul>
-          <button className="logout-btn text-[#ff4f4f] border-2 border-[#ff4f4f] font-bold rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] p-3 mt-auto mb-2 w-full hover:bg-[#ff4f4f] hover:text-black orbitron transition">
+          <button onClick={() => { localStorage.clear(); window.location.href = "/login"; }} className="logout-btn text-[#ff4f4f] border-2 border-[#ff4f4f] font-bold rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] p-3 mt-auto mb-2 w-full hover:bg-[#ff4f4f] hover:text-black orbitron transition">
             Logout
           </button>
         </aside>

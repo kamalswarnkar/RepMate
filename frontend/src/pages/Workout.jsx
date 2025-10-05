@@ -11,13 +11,13 @@ const Workout = () => {
 
   useEffect(() => {
     if (localStorage.getItem("repMateUserLoggedIn") !== "true") {
-      window.location.href = "login.html";
+      window.location.href = "/login";
       return;
     }
 
     const selectedPlan = localStorage.getItem("repMateSelectedPlan");
     if (!selectedPlan) {
-      window.location.href = "plan.html";
+      window.location.href = "/plan";
       return;
     }
 
@@ -59,14 +59,14 @@ const Workout = () => {
   };
 
   const goBack = () => {
-    window.location.href = "plan.html";
+    window.location.href = "/plan";
   };
 
   const goDashboard = () => {
     if (localStorage.getItem("repMateUserLoggedIn") === "true") {
-      window.location.href = "dashboard.html";
+      window.location.href = "/dashboard";
     } else {
-      window.location.href = "login.html";
+      window.location.href = "/login";
     }
   };
 
@@ -108,11 +108,11 @@ const Workout = () => {
           Workout Arena
         </h1>
         <nav className="flex gap-6">
-          <a href="home.html" className="text-white/80 hover:text-[#3ECF8E] transition">Home</a>
-          <a href="dashboard.html" className="text-white/80 hover:text-[#3ECF8E] transition">Dashboard</a>
-          <a href="goal-selection.html" className="text-white/80 hover:text-[#3ECF8E] transition">Goals</a>
-          <a href="profile.html" className="text-white/80 hover:text-[#3ECF8E] transition">Profile</a>
-          <a href="contact.html" className="text-white/80 hover:text-[#3ECF8E] transition">Contact</a>
+          <a href="/" className="text-white/80 hover:text-[#3ECF8E] transition">Home</a>
+          <a href="/dashboard" className="text-white/80 hover:text-[#3ECF8E] transition">Dashboard</a>
+          <a href="/goal" className="text-white/80 hover:text-[#3ECF8E] transition">Goals</a>
+          <a href="/profile" className="text-white/80 hover:text-[#3ECF8E] transition">Profile</a>
+          <a href="/contact" className="text-white/80 hover:text-[#3ECF8E] transition">Contact</a>
         </nav>
       </header>
 

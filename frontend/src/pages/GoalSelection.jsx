@@ -67,7 +67,7 @@ const GoalSelection = () => {
           <ul className="flex gap-6 font-semibold">
             <li>
               <a
-                href="about.html"
+                href="/about"
                 className="transition nav-link text-[#e4e6eb]"
               >
                 About
@@ -75,7 +75,7 @@ const GoalSelection = () => {
             </li>
             <li>
               <a
-                href="contact.html"
+                href="/contact"
                 className="transition nav-link text-[#e4e6eb]"
               >
                 Contact
@@ -83,7 +83,7 @@ const GoalSelection = () => {
             </li>
             <li>
               <a
-                href="login.html"
+                href="/login"
                 className="bg-[#0066FF] px-4 py-2 rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] font-semibold text-white shadow-[0_0_6px_rgba(0,102,255,0.3)] hover:bg-[#0052cc] hover:text-[#3ECF8E] hover:shadow-[0_0_10px_rgba(0,102,255,0.6),0_0_18px_rgba(0,102,255,0.3)] transition"
               >
                 Login
@@ -126,7 +126,7 @@ const GoalSelection = () => {
 
         {/* Continue Button */}
         <a
-          href="questionaire.html"
+          href="/questionnaire"
           onClick={handleContinue}
           className="inline-block mt-12 bg-[#0066FF] text-white orbitron font-semibold px-6 py-3 rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] border border-[rgba(255,255,255,0.05)] shadow-[0_0_6px_rgba(0,102,255,0.3)] hover:bg-[#0052cc] hover:text-[#3ECF8E] hover:shadow-[0_0_10px_rgba(0,102,255,0.6),0_0_18px_rgba(0,102,255,0.3)] hover:translate-y-[-2px] transition"
         >

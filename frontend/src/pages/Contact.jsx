@@ -10,9 +10,9 @@ const Contact = () => {
     if (logoLink) {
       logoLink.addEventListener("click", () => {
         if (localStorage.getItem("repMateUserLoggedIn") === "true") {
-          window.location.href = "dashboard.html";
+          window.location.href = "/dashboard";
         } else {
-          window.location.href = "home.html";
+          window.location.href = "/";
         }
       });
     }
@@ -93,7 +93,7 @@ const Contact = () => {
           <ul className="inline-flex items-center flex gap-5 list-none font-['Orbitron']">
             <li>
               <a
-                href="home.html"
+                href="/"
                 className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition"
               >
                 Home
@@ -101,7 +101,7 @@ const Contact = () => {
             </li>
             <li>
               <a
-                href="about.html"
+                href="/about"
                 className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition"
               >
                 About
@@ -109,7 +109,7 @@ const Contact = () => {
             </li>
             <li>
               <a
-                href="login.html"
+                href="/login"
                 className="px-4 py-2 bg-[#0066FF] rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] text-white font-['Orbitron'] font-semibold hover:bg-[#0052cc] hover:shadow-[0_0_10px_rgba(0,102,255,0.6),0_0_18px_rgba(0,102,255,0.3)] hover:text-[#3ECF8E] hover:-translate-y-0.5 hover:[text-shadow:_0_0_6px_rgba(62,207,142,0.6)] transition"
               >
                 Login

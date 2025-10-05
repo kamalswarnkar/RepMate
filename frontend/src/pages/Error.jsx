@@ -31,18 +31,18 @@ const Error = () => {
           </div>
           <ul className="flex gap-5 orbitron">
             <li>
-              <a href="about.html" className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition">
+              <a href="/about" className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition">
                 About
               </a>
             </li>
             <li>
-              <a href="contact.html" className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition">
+              <a href="/contact" className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition">
                 Contact
               </a>
             </li>
             <li>
               <a
-                href="login.html"
+                href="/login"
                 className="bg-[#0066FF] px-4 py-2 rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px]
                   border border-white/5 text-white font-semibold orbitron
                   shadow-[0_0_6px_rgba(0,102,255,0.3)] transition transform
@@ -66,7 +66,7 @@ const Error = () => {
           Looks like this page forgot leg day and vanished 💨
         </p>
         <a
-          href="home.html"
+          href="/"
           className="inline-block bg-[#0066FF] text-white px-6 py-3 font-semibold orbitron
             border border-white/5 shadow-[0_0_6px_rgba(0,102,255,0.3)]
             rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl

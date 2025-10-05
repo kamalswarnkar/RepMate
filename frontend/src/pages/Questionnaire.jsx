@@ -25,7 +25,7 @@ const Questionnaire = () => {
   };
 
   const redirectToPlan = (mode) => {
-    window.location.href = `plan.html?mode=${mode}`;
+    window.location.href = `/plan?mode=${mode}`;
   };
 
   useEffect(() => {

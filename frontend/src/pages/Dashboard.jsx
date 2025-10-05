@@ -138,20 +138,20 @@ const Dashboard = () => {
                             safeParse(localStorage.getItem("selectedPlan")) ||
                             safeParse(localStorage.getItem("repMateSelectedPlan_" + userEmail));
       if (planCandidate) {
-        window.location.href = "workout.html?day=1";
+        window.location.href = "/workout?day=1";
       } else {
-        window.location.href = "plan.html";
+        window.location.href = "/plan";
       }
     });
 
     if (progressPercent >= 100) {
       try { localStorage.removeItem("repMateProgress"); } catch (e) {}
-      window.location.href = "goal-selection.html";
+      window.location.href = "/goal";
     }
 
     document.querySelector(".logout-btn").addEventListener("click", () => {
       localStorage.clear();
-      window.location.href = "login.html";
+      window.location.href = "/login";
     });
 
   }, []);
@@ -208,12 +208,12 @@ const Dashboard = () => {
 
         <aside className="w-[260px] bg-white/5 border-t border-l border-b border-[#42f5b940] p-5 h-screen sticky top-0 flex flex-col justify-between">
           <ul className="flex-1 p-0 m-0">
-            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="home.html">Home</a></li>
-            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="profile.html">Profile</a></li>
-            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="goal-selection.html">Goals</a></li>
-            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="plan.html">AI Planner</a></li>
-            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="about.html">About</a></li>
-            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="contact.html">Contact</a></li>
+            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="/">Home</a></li>
+            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="/profile">Profile</a></li>
+            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="/goal">Goals</a></li>
+            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="/plan">AI Planner</a></li>
+            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="/about">About</a></li>
+            <li className="mb-5 text-white orbitron text-lg hover:text-[#3ECF8E] hover:drop-shadow-[0_0_8px_#3ECF8E]"><a href="/contact">Contact</a></li>
           </ul>
           <button className="logout-btn text-[#ff4f4f] border-2 border-[#ff4f4f] font-bold rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] p-3 mt-auto mb-2 w-full hover:bg-[#ff4f4f] hover:text-black orbitron transition">Logout</button>
         </aside>

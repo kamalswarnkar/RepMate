@@ -11,7 +11,7 @@ const About = () => {
         if (localStorage.getItem("repMateUserLoggedIn") === "true") {
           window.location.href = "/dashboard";
         } else {
-          window.location.href = "/home";
+          window.location.href = "/";
         }
       });
     }
@@ -52,7 +52,7 @@ const About = () => {
           </div>
           <ul className="flex gap-5 orbitron">
             <li>
-              <a href="/home" className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition">
+              <a href="/" className="font-semibold text-[#e4e6eb] hover:text-[#3ECF8E] transition">
                 Home
               </a>
             </li>

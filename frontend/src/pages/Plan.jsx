@@ -22,7 +22,7 @@ const Plan = () => {
         currentPlace = savedPlace;
         generatePlan(profileData, goalData, savedPlace, true);
       } else {
-        document.getElementById("homeGymModal").classList.remove("hidden");
+      document.getElementById("homeGymModal").classList.remove("hidden");
       }
     }
   }, []);
@@ -151,7 +151,7 @@ const Plan = () => {
           <a href="/dashboard" className="orbitron text-white/80 hover:text-[#3ECF8E] transition">
             Dashboard
           </a>
-          <a href="/goal-selection" className="orbitron text-white/80 hover:text-[#3ECF8E] transition">
+          <a href="/goal" className="orbitron text-white/80 hover:text-[#3ECF8E] transition">
             Goals
           </a>
           <a href="/profile" className="orbitron text-white/80 hover:text-[#3ECF8E] transition">
@@ -206,7 +206,7 @@ const Plan = () => {
           </button>
         </div>
 
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-4 font-['Orbitron']">
           <button id="start-workout" style={{ display: "none" }} className="bg-[#0066FF] text-white px-6 py-3 rounded-md">
             Start Plan
           </button>
