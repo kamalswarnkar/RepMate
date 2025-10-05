@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* index.css (or global styles) */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #10141a; /* Match your app background */
+}
+
+#root {
+    max-width: none !important;
+    padding: 0 !important;
+    text-align: initial !important;
+  }
+
+/* Autofill Fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #10141a inset !important;
+  -webkit-text-fill-color: #e4e6eb !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
