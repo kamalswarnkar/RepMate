@@ -10,7 +10,7 @@ const AvatarModal = ({ setAvatar, closeModal }) => {
   return (
     <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
       <div className="bg-[#1a1a1a] p-8 rounded-lg shadow-[0_0_12px_#29f5a6] text-center max-w-lg">
-        <h3 className="font-['Orbitron'] text-xl mb-4">Select Your Avatar</h3>
+        <h3 className="font-orbitron text-xl mb-4">Select Your Avatar</h3>
         <div className="flex flex-wrap justify-center gap-4">
           {avatars.map((src, i) => (
             <img
@@ -24,7 +24,10 @@ const AvatarModal = ({ setAvatar, closeModal }) => {
             />
           ))}
         </div>
-        <button onClick={closeModal} className="btn-primary mt-6">
+        <button
+          onClick={closeModal}
+          className="mt-6 bg-[#0066FF] text-white px-4 py-2 rounded-tl-[15px] rounded-br-[15px] rounded-tr-[8px] rounded-bl-[8px] font-orbitron hover:bg-[#0052cc] transition"
+        >
           Close
         </button>
       </div>
