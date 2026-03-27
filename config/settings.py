@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'profiles',
     'goals',
     'questionnaires',
+    'plans',
 ]
 
 MIDDLEWARE = [
