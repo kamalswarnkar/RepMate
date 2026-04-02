@@ -15,3 +15,9 @@ class ProgressStat(models.Model):
     streak = models.IntegerField(default=0)
     xp = models.IntegerField(default=0)
     level = models.IntegerField(default=1)
+
+class Exercise(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    video_url = models.URLField()
+    muscle_group = models.CharField(max_length=50)

@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import WorkoutSession, ProgressStat
+from .models import WorkoutSession, ProgressStat, Exercise
 from plans.models import WorkoutDay
+from .serializers import ExerciseSerializer
 from .utils import update_progress
 from django.shortcuts import render
 
@@ -47,3 +48,10 @@ class DashboardView(APIView):
             }
 
             return Response(data)
+
+class ExerciseListView(APIView):
+     def get(self, request):
+          exercises = Exercise.objects.all()
+          serializer = ExerciseSerializer(exercises, many=True)
+
+          return Response(serializer.data)
