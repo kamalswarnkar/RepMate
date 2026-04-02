@@ -1,10 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import WorkoutSession, ProgressStat, Exercise
+from .models import WorkoutSession, ProgressStat, Exercise, PostureSession
 from plans.models import WorkoutDay
 from .serializers import ExerciseSerializer
 from .utils import update_progress
 from django.shortcuts import render
+import random
 
 # Create your views here.
 
@@ -55,3 +56,24 @@ class ExerciseListView(APIView):
           serializer = ExerciseSerializer(exercises, many=True)
 
           return Response(serializer.data)
+
+class PostureCheckView(APIView):
+     def post(self, request):
+          user = request.user
+          exercise = request.data.get('exercise')
+
+          score = random.uniform(60, 100)
+          feedback = "Good Form" if score > 80 else "Keep your back straight!"
+
+
+          session = PostureSession.objects.create(
+               user = user,
+               exercise_name = exercise,
+               score = score,
+               feedback = feedback
+          )
+
+          return Response({
+               "score" : score,
+               "feedback" : feedback
+          })

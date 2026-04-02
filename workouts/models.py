@@ -21,3 +21,11 @@ class Exercise(models.Model):
     description = models.TextField(blank=True)
     video_url = models.URLField()
     muscle_group = models.CharField(max_length=50)
+
+class PostureSession(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    exercise_name = models.CharField(max_length=100)
+    score = models.FloatField(default=0)
+    feedback = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
