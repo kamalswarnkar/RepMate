@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import WorkoutSession
+from .models import WorkoutSession, ProgressStat
 from plans.models import WorkoutDay
 from .utils import update_progress
 from django.shortcuts import render
@@ -31,3 +31,19 @@ class CompleteWorkoutView(APIView):
         update_progress(user)
 
         return Response({"message" : "Workout completed"})
+    
+class DashboardView(APIView):
+    def get(self, request):
+            user = request.user
+
+            stat = ProgressStat.objects.filter(user=user).first()
+            total_workouts = WorkoutSession.objects.filter(user=user, completed=True).count()
+
+            data = {
+                 "streak" : stat.streak if stat else 0,
+                 "xp" : stat.xp if stat else 0,
+                 "level" : stat.level if stat else 1,
+                 "total_workouts" : total_workouts
+            }
+
+            return Response(data)
